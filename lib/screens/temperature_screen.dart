@@ -38,7 +38,7 @@ class _TemperatureScreenState extends State<TemperatureScreen> {
             slivers: [
               const SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20.0),
+                  padding: EdgeInsets.only(left: 20.0, bottom: 20, top: 10),
                   child: TitleWidget(
                     littleTitle: "Good Morning,",
                     bigTitle: "Marc-Arnaud",
