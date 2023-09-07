@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:neumorphism_flutter/components/title_widget.dart';
 import 'package:neumorphism_flutter/constants.dart';
 import 'package:neumorphism_flutter/neumorphic/list_tile.dart';
-import 'package:neumorphism_flutter/neumorphic/neumorphic_container.dart';
+import 'package:neumorphism_flutter/neumorphic/container.dart';
 import 'package:neumorphism_flutter/neumorphic/presets.dart';
 import 'package:neumorphism_flutter/screens/model/home_item.dart';
+import 'package:neumorphism_flutter/screens/temperature_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,6 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
   }
 
+  void _goToTemperatureScreen() {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const TemperatureScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               _buildTitlePanel(),
               _buildDevicesListPanel(),
-              _buildTemperatureIndicator(),
+              GestureDetector(
+                onTap: _goToTemperatureScreen,
+                child: _buildTemperatureIndicator(),
+              ),
               _buildHumidityAndInternetIndicators(),
               const Spacer(),
               _buildBottomPanel(),
@@ -54,28 +64,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildTitlePanel() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Hello!",
-            style: GoogleFonts.notoSans(
-              fontWeight: FontWeight.w900,
-              color: kGrayedBlueColor,
-            ),
-          ),
-          const SizedBox(height: 5),
-          Text(
-            "My Home",
-            style: GoogleFonts.notoSans(
-              fontSize: 25,
-              fontWeight: FontWeight.w900,
-              color: kDarkBlueColor,
-            ),
-          )
-        ],
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8.0),
+      child: TitleWidget(
+        littleTitle: "Hello!",
+        bigTitle: "My Home",
       ),
     );
   }

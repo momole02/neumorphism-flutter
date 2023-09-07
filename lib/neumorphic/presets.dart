@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:neumorphism_flutter/constants.dart';
-import 'package:neumorphism_flutter/neumorphic/neumorphic_container.dart';
+import 'package:neumorphism_flutter/neumorphic/container.dart';
 
 Widget neumorphicNormalContainer(Widget child) {
   return NeumorphicContainer(
